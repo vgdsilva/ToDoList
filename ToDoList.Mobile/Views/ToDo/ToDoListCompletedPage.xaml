@@ -39,7 +39,96 @@
         </Grid>
     </Shell.TitleView>
 
-    <Grid Padding="24">
-        
+    <Grid Padding="24"
+      RowDefinitions="Auto,*"
+      RowSpacing="24">
+
+        <Grid ColumnDefinitions="*,*">
+            <Label Grid.Row="1"
+                   Grid.Column="0"
+                   Text="Completed Tasks"
+                   TextColor="#3F3D56"
+                   FontSize="20"
+                   FontAttributes="Bold" />
+            
+            <Label Grid.Row="1"
+                   Grid.Column="1"
+                   HorizontalOptions="End"
+                   Text="Delete all"
+                   TextColor="#FF5E5E"
+                   FontSize="18" />
+        </Grid>
+
+
+        <CollectionView Grid.Row="1"
+                    ItemsSource="{StaticResource ToDoItensMockData}"
+                    VerticalOptions="CenterAndExpand">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border BackgroundColor="#F5F7F9"
+                        StrokeShape="RoundRectangle 20"
+                        Stroke="Transparent"
+                        Margin="0,8"
+                        Padding="8">
+                        <Grid ColumnDefinitions="Auto,*,Auto"
+                          RowDefinitions="Auto"
+                          ColumnSpacing="16">
+
+                            <CheckBox Color="#C6CFDC"
+                                      Scale="1.4"
+                                      IsChecked="True"
+                                      IsEnabled="False" />
+
+                            <Label Text="{Binding}"
+                                   Grid.Row="0"
+                                   Grid.Column="1"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center"
+                                   TextColor="#8D9CB8"
+                                   FontAttributes="Bold"
+                                   FontSize="16"/>
+
+                            <ImageButton Grid.Row="0"
+                                         Grid.Column="2"
+                                         Source="icon_delete.png"
+                                         WidthRequest="8"
+                                         Aspect="Center"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            <CollectionView.EmptyViewTemplate>
+                <DataTemplate>
+                    <Grid RowDefinitions="Auto,Auto,Auto"
+                      RowSpacing="24"
+                      VerticalOptions="CenterAndExpand">
+                        <Image Grid.Row="0"
+                           Source="img_no_data_todo.png"
+                           WidthRequest="82"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+
+                        <Label Grid.Row="1"
+                           Text="You have no task listed"
+                           TextColor="#8D9CB8"
+                           FontSize="16"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+
+                        <Button Grid.Row="2"
+                            HorizontalOptions="Center"
+                            Text="+ Create task"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            TextColor="{StaticResource Primary}"
+                            BackgroundColor="#c7e3ff"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.EmptyViewTemplate>
+
+        </CollectionView>
+
     </Grid>
 </ContentPage>

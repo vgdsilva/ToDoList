@@ -1,4 +1,5 @@
 ﻿using ToDoList.Mobile.Components;
+using ToDoList.Mobile.Views.Base;
 using ToDoList.Mobile.Views.ToDo;
 
 namespace ToDoList.Mobile
@@ -11,6 +12,20 @@ namespace ToDoList.Mobile
         {
             InitializeComponent();
             RegisterRoutes();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            (BindingContext as BaseViewModels)?.OnAppearing();
+        }
+
+        protected override void OnDisappearing() 
+        {
+            (BindingContext as BaseViewModels)?.OnDisappearing();
+
+            base.OnDisappearing(); 
         }
 
         void RegisterRoutes()

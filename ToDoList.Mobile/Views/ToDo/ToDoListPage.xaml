@@ -9,22 +9,6 @@
         <toolkit:StatusBarBehavior StatusBarColor="White" StatusBarStyle="DarkContent"/>
     </ContentPage.Behaviors>
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <x:Array x:Key="ToDoItensMockData" Type="{x:Type x:String}">
-                <!--
-                <x:String>Design sign up flow</x:String>
-                <x:String>Design use case page</x:String>
-                <x:String>Test Wireframe</x:String>
-                <x:String>Create new task UI flow</x:String>
-                <x:String>Collect project assets</x:String>
-                <x:String>Collect Skills list</x:String>
-                <x:String>Design use case page</x:String>
-                -->
-            </x:Array>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
     <Shell.TitleView>
         <Grid ColumnDefinitions="*,*">
             <Image Source="img_logo.png"

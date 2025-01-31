@@ -5,6 +5,20 @@
              x:Class="ToDoList.Mobile.App">
     <Application.Resources>
         <ResourceDictionary>
+
+            <x:Array x:Key="ToDoItensMockData" Type="{x:Type x:String}">
+                <x:String>Design sign up flow</x:String>
+                <x:String>Design use case page</x:String>
+                <x:String>Test Wireframe</x:String>
+                <x:String>Create new task UI flow</x:String>
+                <x:String>Collect project assets</x:String>
+                <x:String>Collect Skills list</x:String>
+                <x:String>Design use case page</x:String>
+            </x:Array>
+
+            <x:Array x:Key="ToDoItensMockDataEmpty" Type="{x:Type x:String}">
+            </x:Array>
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
