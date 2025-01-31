@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="ToDoList.Mobile.Views.ToDo.ToDoListPage"
+             Title="ToDoListPage">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="White" StatusBarStyle="DarkContent"/>
+    </ContentPage.Behaviors>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:Array x:Key="ToDoItensMockData" Type="{x:Type x:String}">
+                <!--
+                <x:String>Design sign up flow</x:String>
+                <x:String>Design use case page</x:String>
+                <x:String>Test Wireframe</x:String>
+                <x:String>Create new task UI flow</x:String>
+                <x:String>Collect project assets</x:String>
+                <x:String>Collect Skills list</x:String>
+                <x:String>Design use case page</x:String>
+                -->
+            </x:Array>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Shell.TitleView>
+        <Grid ColumnDefinitions="*,*">
+            <Image Source="img_logo.png"
+                   HeightRequest="28"
+                   Aspect="AspectFit"
+                   HorizontalOptions="Start" />
+
+            <Grid Grid.Column="1"
+                  ColumnDefinitions="Auto,Auto"
+                  HorizontalOptions="End"
+                  Margin="0,0,16,0"
+                  ColumnSpacing="16">
+                
+                <Label Text="Seja bem-vindo"
+                       HorizontalOptions="End"
+                       VerticalOptions="Center"
+                       Grid.Column="0"
+                       FontSize="Subtitle"
+                       FontAttributes="Bold"/>
+
+                <Border Grid.Column="1" 
+                        HeightRequest="40"
+                        WidthRequest="40"
+                        StrokeShape="RoundRectangle 50"
+                        BackgroundColor="DarkGray" />
+            </Grid>
+            
+        </Grid>
+    </Shell.TitleView>
+
+    <Grid Padding="24"
+          RowDefinitions="Auto,*"
+          RowSpacing="24">
+
+        <Grid RowDefinitions="Auto,Auto"
+              RowSpacing="8">
+            <Label Grid.Row="0" FontSize="20">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Welcome, "
+                              FontAttributes="Bold"/>
+                        <Span Text="John"
+                              TextColor="{StaticResource Primary}"
+                              FontAttributes="Bold"/>
+                        <Span Text="."/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Grid.Row="1"
+                   Text="You've got 7 tasks to do."
+                   TextColor="#8D9CB8"
+                   FontSize="16"/>
+        </Grid>
+
+
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{StaticResource ToDoItensMockData}"
+                        VerticalOptions="CenterAndExpand">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border BackgroundColor="#F5F7F9"
+                            StrokeShape="RoundRectangle 20"
+                            Stroke="Transparent"
+                            Margin="0,8"
+                            Padding="8">
+                        <Grid ColumnDefinitions="Auto,*"
+                              RowDefinitions="Auto,Auto"
+                              ColumnSpacing="16">
+                            
+                            <CheckBox Color="#C6CFDC"
+                                      Scale="1.4"/>
+
+                            <Label Text="{Binding}"
+                                   Grid.Row="0"
+                                   Grid.Column="1"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center"
+                                   TextColor="#3F3D56"
+                                   FontAttributes="Bold"
+                                   FontSize="16"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            <CollectionView.EmptyViewTemplate>
+                <DataTemplate>
+                    <Grid RowDefinitions="Auto,Auto,Auto"
+                          RowSpacing="24"
+                          VerticalOptions="CenterAndExpand">
+                        <Image Grid.Row="0"
+                               Source="img_no_data_todo.png"
+                               WidthRequest="82"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"/>
+
+                        <Label Grid.Row="1"
+                               Text="You have no task listed"
+                               TextColor="#8D9CB8"
+                               FontSize="16"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"/>
+
+                        <Button Grid.Row="2"
+                                HorizontalOptions="Center"
+                                Text="+ Create task"
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                TextColor="{StaticResource Primary}"
+                                BackgroundColor="#c7e3ff"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.EmptyViewTemplate>
+            
+        </CollectionView>
+        
+    </Grid>
+</ContentPage>

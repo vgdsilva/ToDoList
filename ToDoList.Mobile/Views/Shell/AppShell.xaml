@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="ToDoList.Mobile.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:local="clr-namespace:ToDoList.Mobile.Views.Shell"
+    xmlns:components="clr-namespace:ToDoList.Mobile.Components"
+    xmlns:base="clr-namespace:ToDoList.Mobile.Views.Base"
+    xmlns:toDo="clr-namespace:ToDoList.Mobile.Views.ToDo"
+    Shell.FlyoutBehavior="Disabled">
+
+    <Shell.BindingContext>
+        <local:AppShellViewModel />
+    </Shell.BindingContext>
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="TabsTitleView">
+                <Grid ColumnDefinitions="*,*">
+                    <Image Source="img_logo.png"
+                           HeightRequest="28"
+                           Aspect="AspectFit"
+                           HorizontalOptions="Start" />
+
+                    <Label Text="Seja bem-vindo"
+                           HorizontalOptions="End"
+                           Grid.Column="1"/>
+                </Grid>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <TabBar>
+        <components:TabItemShell Title="ToDo"
+                                 Icon="icon_todo.png"
+                                 ContentTemplate="{DataTemplate toDo:ToDoListPage}"
+                                 Route="ToDoList" />
+        
+        <components:TabItemShell Title="Create"
+                                 Icon="icon_plus.png"
+                                 Command="{Binding AddToDoItemCommand}" 
+                                 Route="AddToDoItemCommand"/>
+        
+        <components:TabItemShell Title="Search"
+                                 Icon="icon_search.png"
+                                 ContentTemplate="{DataTemplate toDo:ToDoListSearchPage}"
+                                 Route="ToDoListSearch" />
+
+        <components:TabItemShell Title="Done"
+                                 Icon="icon_checked.png"
+                                 ContentTemplate="{DataTemplate toDo:ToDoListCompletedPage}" 
+                                 Route="ToDoListCompleted" />
+    </TabBar>
+
+</Shell>
