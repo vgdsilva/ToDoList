@@ -15,27 +15,6 @@
                    HeightRequest="28"
                    Aspect="AspectFit"
                    HorizontalOptions="Start" />
-
-            <Grid Grid.Column="1"
-                  ColumnDefinitions="Auto,Auto"
-                  HorizontalOptions="End"
-                  Margin="0,0,16,0"
-                  ColumnSpacing="16">
-
-                <Label Text="Seja bem-vindo"
-                       HorizontalOptions="End"
-                       VerticalOptions="Center"
-                       Grid.Column="0"
-                       FontSize="Subtitle"
-                       FontAttributes="Bold"/>
-
-                <Border Grid.Column="1" 
-                        HeightRequest="40"
-                        WidthRequest="40"
-                        StrokeShape="RoundRectangle 50"
-                        BackgroundColor="DarkGray" />
-            </Grid>
-
         </Grid>
     </Shell.TitleView>
 

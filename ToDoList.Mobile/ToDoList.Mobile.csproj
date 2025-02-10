@@ -69,6 +69,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\ToDoList.Data\ToDoList.Data.csproj" />
+	  <ProjectReference Include="..\ToDoList.Domain\ToDoList.Domain.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

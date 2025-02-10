@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:local="clr-namespace:ToDoList.Mobile.Views.ToDo"
+             xmlns:entity="clr-namespace:ToDoList.Domain.Entities;assembly=ToDoList.Domain"
              x:Class="ToDoList.Mobile.Views.ToDo.ToDoListPage"
              Title="ToDoListPage">
 
@@ -9,33 +11,16 @@
         <toolkit:StatusBarBehavior StatusBarColor="White" StatusBarStyle="DarkContent"/>
     </ContentPage.Behaviors>
 
+    <ContentPage.BindingContext>
+        <local:ToDoListViewModel />
+    </ContentPage.BindingContext>
+
     <Shell.TitleView>
         <Grid ColumnDefinitions="*,*">
             <Image Source="img_logo.png"
                    HeightRequest="28"
                    Aspect="AspectFit"
                    HorizontalOptions="Start" />
-
-            <Grid Grid.Column="1"
-                  ColumnDefinitions="Auto,Auto"
-                  HorizontalOptions="End"
-                  Margin="0,0,16,0"
-                  ColumnSpacing="16">
-                
-                <Label Text="Seja bem-vindo"
-                       HorizontalOptions="End"
-                       VerticalOptions="Center"
-                       Grid.Column="0"
-                       FontSize="Subtitle"
-                       FontAttributes="Bold"/>
-
-                <Border Grid.Column="1" 
-                        HeightRequest="40"
-                        WidthRequest="40"
-                        StrokeShape="RoundRectangle 50"
-                        BackgroundColor="DarkGray" />
-            </Grid>
-            
         </Grid>
     </Shell.TitleView>
 
@@ -65,11 +50,11 @@
 
 
         <CollectionView Grid.Row="1"
-                        ItemsSource="{StaticResource ToDoItensMockData}"
+                        ItemsSource="{Binding ToDoItems}"
                         VerticalOptions="CenterAndExpand">
 
             <CollectionView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="entity:ToDoItem">
                     <Border BackgroundColor="#F5F7F9"
                             StrokeShape="RoundRectangle 20"
                             Stroke="Transparent"
@@ -78,11 +63,18 @@
                         <Grid ColumnDefinitions="Auto,*"
                               RowDefinitions="Auto,Auto"
                               ColumnSpacing="16">
-                            
-                            <CheckBox Color="#C6CFDC"
-                                      Scale="1.4"/>
 
-                            <Label Text="{Binding}"
+                            <CheckBox Color="#C6CFDC"
+                                      Scale="1.4"
+                                      IsChecked="{Binding IsCompleted}"
+                                      CheckedChanged=""
+                                      >
+                                <CheckBox.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding }"/>
+                                </CheckBox.GestureRecognizers>
+                            </CheckBox>
+
+                            <Label Text="{Binding Description}"
                                    Grid.Row="0"
                                    Grid.Column="1"
                                    HorizontalOptions="Start"
